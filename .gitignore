@@ -1,0 +1,7 @@
+# Ignore everything
+*
+
+!.gitignore
+!bin
+!bin/*
+!Dockerfile

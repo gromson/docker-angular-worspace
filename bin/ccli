@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+exec="docker run --rm -i -v /Users/romson/projects/frontend/typescript_test:/app angular-test"
+
+if [ $# -eq 0 ]; then
+    echo "Please provide the command as an argument to execute!"
+    exit
+fi
+
+if [ $# -gt 0 ]; then
+    command=$1
+fi
+
+exec="$exec $command"
+
+$exec
