@@ -1,0 +1,21 @@
+#!/bin/bash
+
+IMAGE="angular-environment"
+REINIT="N"
+IMAGE_INFO="$(docker images -a | grep $IMAGE)"
+
+if [ -n "$IMAGE_INFO" ];
+then
+    read -n 1 -p "The environment is already initialized. Do you want to re-initialize it? y/N:" REINIT
+    echo
+    
+    if [ $REINIT == "N" ] || [ $REINIT == "n" ];
+    then
+        exit
+    fi
+    
+    $("docker image rm -f $IMAGE")
+fi
+
+cd "$(dirname $0)/../"
+$("docker build --pull --force-rm -t $IMAGE .")
