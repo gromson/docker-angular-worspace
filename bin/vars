@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+IMAGE="angular-environment"
+VM_WORKDIR="/angular_workspace"
+
+function get_workspace_path(){
+    local path="$(cd "$(dirname $0)/../"; pwd -P)"
+    echo "$path"    
+}

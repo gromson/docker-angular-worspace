@@ -1,3 +1,8 @@
 #!/usr/bin/env bash
 
-docker run --rm -it -p 4200:4200 -v /Users/romson/projects/frontend/typescript_test:/app angular-test bash
+. "$(dirname $0)/vars"
+
+workdir="$(get_workspace_path)"
+exec="docker run --rm -it -p 4200:4200 -v $workdir:$VM_WORKDIR $IMAGE bash"
+
+$exec

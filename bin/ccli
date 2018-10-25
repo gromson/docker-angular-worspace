@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
-exec="docker run --rm -i -v /Users/romson/projects/frontend/typescript_test:/app angular-test"
+. "$(dirname $0)/vars"
+
+workdir="$(get_workspace_path)"
+exec="docker run --rm -i -v $workdir:$VM_WORKDIR $IMAGE"
 
 if [ $# -eq 0 ]; then
     echo "Please provide the command as an argument to execute!"

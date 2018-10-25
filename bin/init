@@ -1,6 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-IMAGE="angular-environment"
+. "$(dirname $0)/vars"
+
 REINIT="N"
 IMAGE_INFO="$(docker images -a | grep $IMAGE)"
 
@@ -14,8 +15,10 @@ then
         exit
     fi
     
-    $("docker image rm -f $IMAGE")
+    EXEC_IMAGE_RM="docker image rm -f $IMAGE"
+    $EXEC_IMAGE_RM
 fi
 
 cd "$(dirname $0)/../"
-$("docker build --pull --force-rm -t $IMAGE .")
+EXEC_IMAGE_BUILD="docker build --pull --force-rm -t $IMAGE ."
+$EXEC_IMAGE_BUILD
